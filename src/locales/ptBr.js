@@ -49,3 +49,5 @@ const ptBr = {
     invalidDate: 'Data inválida'
   }
 }
+
+module.exports = ptBr

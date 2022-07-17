@@ -59,3 +59,5 @@ const enAu = {
     }
   }
 }
+
+module.exports = enAu
