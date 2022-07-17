@@ -10,6 +10,7 @@ import WeekSelector from "./WeekSelector";
 import Scroller from "./Scroller";
 import styles from "./Calendar.style.js";
 import { localeNames } from "./definitions";
+import { returnsLocale } from "./utils/utils";
 
 /*
  * Class CalendarLine that is representing the whole calendar line and contains CalendarDay elements
@@ -113,6 +114,9 @@ class CalendarLine extends Component {
   constructor(props) {
     super(props);
     this.numDaysScroll = 366; // prefer even number divisible by 3
+
+    if (props.localeName)
+        props.locale = returnsLocale(props.localeName)
 
     if (props.locale) {
       if (props.locale.name && props.locale.config) {
