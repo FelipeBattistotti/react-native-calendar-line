@@ -114,18 +114,19 @@ class CalendarLine extends Component {
   constructor(props) {
     super(props);
     this.numDaysScroll = 366; // prefer even number divisible by 3
+    this.locale = props.locale
 
     if (props.localeName)
-        props.locale = returnsLocale(props.localeName)
+        this.locale = returnsLocale(props.localeName)
 
-    if (props.locale) {
-      if (props.locale.name && props.locale.config) {
-        moment.updateLocale(props.locale.name, props.locale.config);
-      } else {
-        throw new Error(
-          "Locale prop is not in the correct format. \b Locale has to be in form of object, with params NAME and CONFIG!"
-        );
-      }
+    if (this.locale) {
+        if (this.locale.name && this.locale.config) {
+            moment.updateLocale(this.locale.name, this.locale.config);
+        } else {
+            throw new Error(
+              "Locale prop is not in the correct format. \b Locale has to be in form of object, with params NAME and CONFIG!"
+            )
+        }
     }
 
     const startingDate = this.getInitialStartingDate();
@@ -209,8 +210,8 @@ class CalendarLine extends Component {
     let _date = date && moment(date);
     if (_date) {
       _date.set({ hour: 12}); // keep date the same regardless of timezone shifts
-      if (this.props.locale) {
-        _date = _date.locale(this.props.locale.name);
+      if (this.locale) {
+        _date = _date.locale(this.locale.name);
       }
     }
     return _date;
