@@ -9,6 +9,7 @@ import CalendarDay from "./CalendarDay";
 import WeekSelector from "./WeekSelector";
 import Scroller from "./Scroller";
 import styles from "./Calendar.style.js";
+import { localeNames } from "./definitions";
 
 /*
  * Class CalendarLine that is representing the whole calendar line and contains CalendarDay elements
@@ -78,7 +79,7 @@ class CalendarLine extends Component {
     disabledDateOpacity: PropTypes.number,
     styleWeekend: PropTypes.bool,
     locale: PropTypes.object,
-    localeName: PropTypes.string,
+    localeName: PropTypes.oneOf(localeNames),
     shouldAllowFontScaling: PropTypes.bool,
     useNativeDriver: PropTypes.bool,
     upperCaseDays: PropTypes.bool,

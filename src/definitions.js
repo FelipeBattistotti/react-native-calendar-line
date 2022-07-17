@@ -11,3 +11,5 @@ const localeNames = [
   "fr",
   "pt-br"
 ]
+
+module.exports = { localeNames }
